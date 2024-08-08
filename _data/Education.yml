@@ -2,17 +2,17 @@ subject: Education
 listing-order: 1
 icon: "/assets/img/graduation-cap.svg"
 contents:
-  - title: Farvard University, PhD in Computer Science
+  - title: California Institute of Technology
     description:
-      - Design of a method to build a probabilistic generative model
-      - Development of model calibration algorithm for cross-domain few-shot learning
-    date: Mar. 2019 - Aug. 2023
-  - title: Stanfort University, MA in Computer Science
-    description:
-      - Development of deep learning algorithms for automatically tracking the facial expressions
-      - Optimizing parameter efficient fine tuning for fairness in medical image analysis
+      - Electrical Engineering - Intelligent Systems
+    date: Sept. 2023 - June 2024
     grade: "**GPA**: `4.1/4.3`"
-    date: Mar. 2014 - Feb. 2016
-  - title: Kambridge University, BA in Electronic Engineering
-    grade: "**GPA**: `3.9/4.3`"
-    date: Mar. 2010 - Feb. 2014
+  - title: University of Toronto
+    description:
+      - Dual Enrollment in Faculty of Arts and Sciences
+      - MAT 223 & MAT 224 (Linear Algebra Fall and Winter)
+    date: Sept. 2022 - May 2023
+  - title: University of Toronto Schools
+    description:
+      - Ontario Secondary School Diploma (AP Stream)
+    date: Sept. 2019 - June 2023
