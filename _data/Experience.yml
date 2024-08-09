@@ -2,11 +2,11 @@ subject: Experiences
 listing-order: 2
 icon: "/assets/img/briefcase.svg"
 contents:
-  - title: Nanosoft
+  - title: Summer Undergraduate Research Fellow
     role: Project Manager
     description:
-      - Led development of a new chatbot software utilizing large language model
-      - Co-designer of '*Kopilot*' and '*Gemmini*'
+      - Increasing phonon collection efficiency by adding thin-film aluminum quasiparticle-trapping fins to the kinetic inductance detector
+      - Running RF simulations in sonnet to track resonance frequency and Q-factor, observing current density distribution at resonance frequency
     date: Jan. 2024 - Ongoing
   - title: Amazone
     role: Senior Software Engineer

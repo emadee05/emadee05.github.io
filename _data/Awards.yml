@@ -2,12 +2,24 @@ subject: Awards
 listing-order: 6
 icon: "/assets/img/trophy.svg"
 contents:
-  - title: IEEEE Fellow
-    description: Association for Natural Language Processing
-    date: Feb. 2024
-  - title: Gogle CodeJam
-    description: 3rd place in Gogle CodeJam
-    date: Jul. 2013
-  - title: Millennium Hackaton
-    description: won the best Inspirational Youth Awards
-    date: Oct. 2010
+  - title: Canadian Young Physicists' Tournament (CaYPT) 2x Gold Medal
+    description: 
+      - Captain of UTS CaYPT Club, organized schools teams, workshops on Tracker and Excel
+      - Mentored 3 teams of younger students, grades 8-11
+    date: Sept. 2020 - July 2023
+  - title: International Young Physicists' Tournament (IYPT) Bronze Medal
+    description: 
+      - Captain of Team Canada, lead team of 5 to compete in Timisoara, Romania
+    date: July 2022
+  - title: Math Competitions
+  description: 
+    - AMC 12a Honor Roll, Euclid 2x Honor Roll
+  date: November 2021 - February 2023
+  - title: TreasureHacks 2.0
+    description: 
+      - 2nd Overall College Division
+    date: May 2022
+  - title: Carnegie Mellon University Women's Mathematics Competition
+    description: 
+      - 3rd Overall in Team Competition
+    date: Oct. 2022
