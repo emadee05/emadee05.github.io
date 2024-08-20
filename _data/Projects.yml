@@ -2,8 +2,8 @@ subject: Projects
 listing-order: 3
 icon: "/assets/img/clipboard-list.svg"
 contents:
-  - title: "Beaver Jump (https://emadee05.github.io/beaver-jump/](https://emadee05.github.io/beaver-jump/))"
+  - title: "Beaver Jump [Play here!](https://emadee05.github.io/beaver-jump/)"
     description: 
       - Single and multiplayer Doodle Jump inspired game from scratch in C
-      - Used SDL for rendering, with custom sprites, enemy AI, custom physics engine
-      - "Technology Used: C, SDL, "
+      - Used SDL for rendering, with custom sprites, sound effects, enemy AI, and custom physics engine
+      - "Technology Used: C, SDL"
