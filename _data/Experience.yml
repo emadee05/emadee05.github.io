@@ -3,20 +3,39 @@ listing-order: 2
 icon: "/assets/img/briefcase.svg"
 contents:
   - title: Summer Undergraduate Research Fellow
-    role: Project Manager
+    role: Physics research intern
     description:
       - Increasing phonon collection efficiency by adding thin-film aluminum quasiparticle-trapping fins to the kinetic inductance detector
       - Running RF simulations in sonnet to track resonance frequency and Q-factor, observing current density distribution at resonance frequency
-    date: Jan. 2024 - Ongoing
-  - title: Amazone
-    role: Senior Software Engineer
+    date: June 2024 - Ongoing
+  - title: Caltech Air and Outer Space (CAOS) NASA Big Idea Challenge
+    role: Mission Lead
     description: 
-      - Built a Java microservice, database schema to manage customer accounts
-      - Enhanced internal pipelines to query real-time data from client devices
-    date: Apr. 2016 - Dec. 2018
-  - title: Pacebook
-    role: Software Engineer Intern
+      - Worked on 2024 Big Idea Challenge proposal team for inflatable landing/launch pad 
+      - Plume-deployed Inflatable for Launch and Landing Abrasive Regolith Shielding (PILLARS)
+    date: Nov. 2023 - Ongoing
+  - title: International Young Physicists' Tournament (IYPT)
+    role: Canadian Team Captain
     description: 
-      - Designed the dynamic website using React for data visualization
-      - Integrated '*Yolo*' to boost the accuracy of the object detection
-    date: Jul. 2013 - Sep. 2013
+      - Led a team of 5 to compete in thesis-defense style research competition for 17 open-ended internationally-published physics phenomena in Timisoara, Romania
+      - Refurbished broken 3D printer for custom 3-axis movement with stepper motors and Arduino Uno, automated data collection with MATLAB
+      - Conducted E&M simulations in COMSOL, data analysis and contour plotting in Python
+    date: Feb. 2022 - Aug. 2022
+  - title: Canadian Young Physicists' Tournament (CaYPT)
+    role: UTS Team Captain
+    description: 
+      - Mentored younger students on the research-design process, building experiments and creating theoretical models for 10 published physics phenomena 
+    date: Feb. 2022 - Aug. 2022
+  - title: 1UP Toronto Youth Builders
+    role: Director of Technology
+    description: 
+      - Developed and maintained dynamic Weebly website with custom HTML and CSS
+      - Automated 200+ bi-weekly newsletters using Mailchimp
+      - Integrated Eventbrite and Excel for 100+ sponsors and students
+    date: Feb. 2022 - Aug. 2022
+  - title: Connecting 4 Care
+    role: Co-founder
+    description: 
+      - Partnered with local City of Toronto Long Term Care home to coordinate weekly volunteer sessions for trivia games (Famiel Feud, Jeopardy, etc)
+      - 80+ student volunteers and 200+ birthday and holiday cards sent
+    date: Aug. 2021 - June. 2023
