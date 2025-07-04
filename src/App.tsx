@@ -51,7 +51,8 @@ function App() {
   const [scrollX, setScrollX] = useState(0);
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const [maxScroll, setMaxScroll] = useState(0);
-  
+  const [activePage, setActivePage] = useState<'projects' | 'about' | 'resume'>('projects'); // NEW
+
   // Calculate max scroll distance
   useEffect(() => {
     const calculateMaxScroll = () => {
@@ -95,14 +96,16 @@ function App() {
         <div className="gradient-bg"></div>
       </div>
 
-      {/* Middle Layer - Moving Projects */}
-      <div className="middle-layer">
+      {/* Projects Layer */}
+      <div
+        className={`middle-layer projects-layer${activePage === 'projects' ? ' visible' : ''}`}
+      >
         <div 
           ref={projectsContainerRef}
           className="projects-container"
           style={{
             transform: `translateX(-${scrollX}px)`,
-            paddingLeft: '200px' // Space for name section
+            paddingLeft: '700px',
           }}
         >
           {projects.map((project) => (
@@ -124,6 +127,48 @@ function App() {
         </div>
       </div>
 
+      {/* About Layer */}
+      <div
+        className={`middle-layer about-layer${activePage === 'about' ? ' visible' : ''}`}
+      >
+        <div className="about-content">
+          <img src="https://via.placeholder.com/200x200/aaa/fff?text=Emily+Xu" alt="Emily Xu" className="about-photo" />
+          <div className="about-description">
+            <h2>About Me</h2>
+            <p>
+              Hi! I'm Emily Xu, a passionate full-stack developer with a love for building beautiful, functional web experiences. I enjoy working with modern technologies and bringing creative ideas to life.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Resume Layer */}
+      <div
+        className={`middle-layer resume-layer${activePage === 'resume' ? ' visible' : ''}`}
+      >
+        <div className="resume-content">
+          <h2>Resume</h2>
+          <div className="resume-tiles">
+            {/* Example vertical tiles */}
+            <div className="resume-tile">
+              <h3>Software Engineer</h3>
+              <p>Company A, 2022-Present</p>
+              <ul>
+                <li>Worked on cool stuff</li>
+              </ul>
+            </div>
+            <div className="resume-tile">
+              <h3>Frontend Developer</h3>
+              <p>Company B, 2020-2022</p>
+              <ul>
+                <li>Built awesome UIs</li>
+              </ul>
+            </div>
+            {/* Add more tiles as needed */}
+          </div>
+        </div>
+      </div>
+
       {/* Top Layer - Static UI */}
       <div className="top-layer">
         {/* Left side name */}
@@ -133,27 +178,42 @@ function App() {
 
         {/* Top navigation */}
         <nav className="navbar">
-          <a href="#about">About</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
+
+          <a
+            href="#about"
+            onClick={e => { e.preventDefault(); setActivePage('about'); }}
+            className={activePage === 'about' ? 'active' : ''}
+          >About</a>
+          <a
+            href="#projects"
+            onClick={e => { e.preventDefault(); setActivePage('projects'); }}
+            className={activePage === 'projects' ? 'active' : ''}
+          >Projects</a>
+          <a
+            href="#resume"
+            onClick={e => { e.preventDefault(); setActivePage('resume'); }}
+            className={activePage === 'resume' ? 'active' : ''}
+          >Resume</a>
+
         </nav>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="scroll-indicator">
-        <div className="scroll-text">
-          <span>Scroll to explore</span>
-          {/* <div className="scroll-arrow">↓</div> */}
+      {/* Scroll indicator (only show on projects page) */}
+      {activePage === 'projects' && (
+        <div className="scroll-indicator">
+          <div className="scroll-text">
+            <span>Scroll to explore</span>
+          </div>
+          <div className="progress-bar">
+            <div
+              className="progress-fill"
+              style={{
+                width: `${progressPercentage}%`
+              }}
+            />
+          </div>
         </div>
-        <div className="progress-bar">
-          <div 
-            className="progress-fill"
-            style={{
-              width: `${progressPercentage}%`
-            }}
-          />
-        </div>
-      </div>
+      )}
     </div>
   )
 }
