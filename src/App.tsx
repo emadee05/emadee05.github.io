@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 interface Project {
@@ -49,19 +49,44 @@ const projects: Project[] = [
 
 function App() {
   const [scrollX, setScrollX] = useState(0);
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
+  const [maxScroll, setMaxScroll] = useState(0);
+  
+  // Calculate max scroll distance
+  useEffect(() => {
+    const calculateMaxScroll = () => {
+      if (projectsContainerRef.current) {
+        const containerWidth = projectsContainerRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const nameSpaceWidth = 200; // Space for name section
+        setMaxScroll(Math.max(0, containerWidth - viewportWidth + nameSpaceWidth));
+      }
+    };
+
+    calculateMaxScroll();
+    window.addEventListener('resize', calculateMaxScroll);
+    return () => window.removeEventListener('resize', calculateMaxScroll);
+  }, []);
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
       event.preventDefault();
-      setScrollX((prevScrollX) => prevScrollX + event.deltaY);
+      
+      setScrollX((prevScrollX) => {
+        const scrollSpeed = 2; // Adjust this to control scroll sensitivity
+        const newScrollX = prevScrollX + (event.deltaY * scrollSpeed);
+        
+        // Clamp between 0 and maxScroll
+        return Math.max(0, Math.min(newScrollX, maxScroll));
+      });
     };
 
     window.addEventListener('wheel', handleScroll, { passive: false });
     return () => window.removeEventListener('wheel', handleScroll);
-  }, []);
+  }, [maxScroll]);
 
-  // Calculate horizontal offset based on scroll position
-  const horizontalOffset = scrollX * 0.5;
+  // Calculate progress percentage
+  const progressPercentage = maxScroll > 0 ? (scrollX / maxScroll) * 100 : 0;
 
   return (
     <div className="app">
@@ -73,9 +98,11 @@ function App() {
       {/* Middle Layer - Moving Projects */}
       <div className="middle-layer">
         <div 
+          ref={projectsContainerRef}
           className="projects-container"
           style={{
-            transform: `translateX(-${horizontalOffset}px)`
+            transform: `translateX(-${scrollX}px)`,
+            paddingLeft: '200px' // Space for name section
           }}
         >
           {projects.map((project) => (
@@ -101,7 +128,7 @@ function App() {
       <div className="top-layer">
         {/* Left side name */}
         <div className="name-section">
-          <h1>Portfolio</h1>
+          <h1>Emily Xu</h1>
         </div>
 
         {/* Top navigation */}
@@ -112,10 +139,23 @@ function App() {
         </nav>
       </div>
 
-      {/* Scroll spacer to enable scrolling */}
-      <div className="scroll-spacer"></div>
+      {/* Scroll indicator */}
+      <div className="scroll-indicator">
+        <div className="scroll-text">
+          <span>Scroll to explore</span>
+          {/* <div className="scroll-arrow">↓</div> */}
+        </div>
+        <div className="progress-bar">
+          <div 
+            className="progress-fill"
+            style={{
+              width: `${progressPercentage}%`
+            }}
+          />
+        </div>
+      </div>
     </div>
   )
 }
 
-export default App 
+export default App
