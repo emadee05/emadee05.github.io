@@ -18,7 +18,7 @@
 .gradient-bg {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #0e79a0 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
@@ -61,7 +61,56 @@
 }
 
 .about-layer {
-  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-left: 200px; /* Offset to prevent overlap with name */
+  padding-right: 100px; /* Added to create space from the right edge */
+}
+
+.about-content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 60%;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.about-photo {
+  position: absolute;
+  left: -50px; /* Adjust as needed to position the image */
+  top: -50px; /* Adjust as needed to position the image */
+  height: calc(100% + 100px); /* Extend beyond the box */
+  object-fit: cover;
+  z-index: 1;
+}
+
+.about-description {
+  flex: 1;
+  padding: 2rem;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+  margin-left: 350px; /* Increased to move text further right */
+  margin-right: 60px; /* Added to create space from the right edge */
+}
+
+.about-description h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.about-description p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .resume-layer {
@@ -82,7 +131,7 @@
 .project-card {
   flex: 0 0 400px;
   height: 500px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.25);
   border-radius: 25px;
   padding: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -121,28 +170,28 @@
 }
 
 .project-card:hover {
-  transform: translateY(-30px) scale(1.02);
+  transform:  scale(1.02);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .project-card:nth-child(1):hover {
-  transform: translateY(-40px) scale(1.02);
+  transform:   translateY(10px) scale(1.02);
 }
 
 .project-card:nth-child(2):hover {
-  transform: translateY(-15px) scale(1.02);
+  transform:  translateY(15px) scale(1.02);
 }
 
 .project-card:nth-child(3):hover {
-  transform: translateY(-30px) scale(1.02);
+  transform:scale(1.02);
 }
 
 .project-card:nth-child(4):hover {
-  transform: translateY(-5px) scale(1.02);
+  transform:translateY(25px) scale(1.02);
 }
 
 .project-card:nth-child(5):hover {
-  transform: translateY(-25px) scale(1.02);
+  transform:translateY(-5px) scale(1.02);
 }
 
 .project-image {
@@ -191,7 +240,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: unset;
   -webkit-box-orient: vertical;
 }
 
@@ -241,6 +290,7 @@
   writing-mode: vertical-lr;
   text-orientation: mixed;
   letter-spacing: 0.1em;
+  transform: rotate(180deg); /* Flip the text 180 degrees */
 }
 
 .navbar {
@@ -307,7 +357,94 @@
     padding: 1rem;
   }
 } 
+.resume-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
 
+.resume-tile {
+  flex: 0 0 250px;
+  min-height: 200px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 1rem;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  color: #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Zig-zag effect */
+.resume-tile:nth-child(odd) {
+  transform: translateY(-20px);
+}
+
+.resume-tile:nth-child(even) {
+  transform: translateY(20px);
+}
+
+.resume-tile:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.resume-tile h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.resume-tile p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.resume-tile ul {
+  padding-left: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.resume-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 2rem 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  height: 400px; /* Increased height */
+  margin-top: 150px; /* Added top margin to center the boxes */
+}
+
+.resume-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.resume-horizontal {
+  display: flex;
+  gap: 2rem;
+  padding-left: 200px;
+}
+
+.resume-tile {
+  flex: 0 0 300px;
+  height: 200px; /* Adjusted to fit within the new container height */
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  color: #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  scroll-snap-align: start;
+}
 
 /* Scroll indicator styles */
 .scroll-indicator {
@@ -379,4 +516,17 @@
 
 .scroll-indicator:hover {
   opacity: 1;
+}
+
+.awards-container {
+  margin-top: -50px; /* Move further up */
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  color: #e2e8f0;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 50px; /* Move text slightly to the right */
 }

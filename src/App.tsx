@@ -7,15 +7,17 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
+  url?: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with React and Node.js",
-    image: "https://via.placeholder.com/400x300/667eea/ffffff?text=E-Commerce",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"]
+    title: "Hand Gesture Classifier",
+    description: "A hand gesture classifier using a custom-built 6x6 photodiode array and neural network model. Built using trans-impedence amplifier and Arduino Micro, modeled and verified TIA circuit using LTSpice, optimized signal fidelity.",
+    image: "/assets/circuit.jpg",
+    technologies: ["Fritzing", "Python", "Arduino"],
+    url: "https://github.com/emadee05/hand-gesture"
   },
   {
     id: 2,
@@ -51,15 +53,18 @@ function App() {
   const [scrollX, setScrollX] = useState(0);
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const [maxScroll, setMaxScroll] = useState(0);
-  const [activePage, setActivePage] = useState<'projects' | 'about' | 'resume'>('projects'); // NEW
+  const [activePage, setActivePage] = useState<'projects' | 'about' | 'resume'>('projects');
 
-  // Calculate max scroll distance
+  const resumeContainerRef = useRef<HTMLDivElement>(null);
+  const [resumeScrollX, setResumeScrollX] = useState(0);
+  const [resumeMaxScroll, setResumeMaxScroll] = useState(0);
+
   useEffect(() => {
     const calculateMaxScroll = () => {
       if (projectsContainerRef.current) {
         const containerWidth = projectsContainerRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
-        const nameSpaceWidth = 200; // Space for name section
+        const nameSpaceWidth = 200;
         setMaxScroll(Math.max(0, containerWidth - viewportWidth + nameSpaceWidth));
       }
     };
@@ -70,46 +75,70 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = (event: WheelEvent) => {
-      event.preventDefault();
-      
-      setScrollX((prevScrollX) => {
-        const scrollSpeed = 2; // Adjust this to control scroll sensitivity
-        const newScrollX = prevScrollX + (event.deltaY * scrollSpeed);
-        
-        // Clamp between 0 and maxScroll
-        return Math.max(0, Math.min(newScrollX, maxScroll));
-      });
+    const calculateResumeScroll = () => {
+      if (resumeContainerRef.current) {
+        const containerWidth = resumeContainerRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const nameOffset = 200;
+        setResumeMaxScroll(Math.max(0, containerWidth - viewportWidth + nameOffset));
+      }
     };
 
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    return () => window.removeEventListener('wheel', handleScroll);
-  }, [maxScroll]);
+    calculateResumeScroll();
+    window.addEventListener('resize', calculateResumeScroll);
+    return () => window.removeEventListener('resize', calculateResumeScroll);
+  }, []);
 
-  // Calculate progress percentage
+  useEffect(() => {
+    const handleScroll = (event: WheelEvent) => {
+      event.preventDefault();
+      setScrollX(prev => Math.max(0, Math.min(prev + event.deltaY * 2, maxScroll)));
+    };
+    if (activePage === 'projects') {
+      window.addEventListener('wheel', handleScroll, { passive: false });
+      return () => window.removeEventListener('wheel', handleScroll);
+    }
+  }, [maxScroll, activePage]);
+
+  useEffect(() => {
+    const handleResumeScroll = (event: WheelEvent) => {
+      if (activePage !== 'resume') return;
+      event.preventDefault();
+      setResumeScrollX(prev => Math.max(0, Math.min(prev + event.deltaY * 2, resumeMaxScroll)));
+    };
+    window.addEventListener('wheel', handleResumeScroll, { passive: false });
+    return () => window.removeEventListener('wheel', handleResumeScroll);
+  }, [resumeMaxScroll, activePage]);
+
   const progressPercentage = maxScroll > 0 ? (scrollX / maxScroll) * 100 : 0;
+  const resumeProgress = resumeMaxScroll > 0 ? (resumeScrollX / resumeMaxScroll) * 100 : 0;
+
+  const experiences = [
+    { title: 'Software Engineer', company: 'Company A', time: '2022–Present', bullets: ['Worked on cool stuff'] },
+    { title: 'Frontend Developer', company: 'Company B', time: '2020–2022', bullets: ['Built awesome UIs'] },
+    { title: 'Research Assistant', company: 'Caltech', time: 'Summer 2024', bullets: ['Explored autonomous driving'] },
+    { title: 'Course Assistant', company: 'CS 156a', time: '2024–2025', bullets: ['Held machine learning office hours'] }
+  ];
 
   return (
     <div className="app">
-      {/* Background Layer - Static */}
       <div className="background-layer">
         <div className="gradient-bg"></div>
       </div>
 
-      {/* Projects Layer */}
-      <div
-        className={`middle-layer projects-layer${activePage === 'projects' ? ' visible' : ''}`}
-      >
+      <div className={`middle-layer projects-layer${activePage === 'projects' ? ' visible' : ''}`}>
         <div 
           ref={projectsContainerRef}
           className="projects-container"
-          style={{
-            transform: `translateX(-${scrollX}px)`,
-            paddingLeft: '700px',
-          }}
+          style={{ transform: `translateX(-${scrollX}px)`, paddingLeft: '1200px' }}
         >
           {projects.map((project) => (
-            <div key={project.id} className="project-card">
+            <div 
+              key={project.id} 
+              className="project-card"
+              onClick={() => project.url && window.open(project.url, '_blank', 'noopener,noreferrer')}
+              style={{ cursor: project.url ? 'pointer' : 'default' }}
+            >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
               </div>
@@ -127,12 +156,9 @@ function App() {
         </div>
       </div>
 
-      {/* About Layer */}
-      <div
-        className={`middle-layer about-layer${activePage === 'about' ? ' visible' : ''}`}
-      >
+      <div className={`middle-layer about-layer${activePage === 'about' ? ' visible' : ''}`}>
         <div className="about-content">
-          <img src="https://via.placeholder.com/200x200/aaa/fff?text=Emily+Xu" alt="Emily Xu" className="about-photo" />
+          <img src="/src/assets/me_picture.jpg" alt="Emily Xu" className="about-photo" />
           <div className="about-description">
             <h2>About Me</h2>
             <p>
@@ -142,80 +168,56 @@ function App() {
         </div>
       </div>
 
-      {/* Resume Layer */}
-      <div
-        className={`middle-layer resume-layer${activePage === 'resume' ? ' visible' : ''}`}
-      >
+      <div className={`middle-layer resume-layer${activePage === 'resume' ? ' visible' : ''}`}>
         <div className="resume-content">
-          <h2>Resume</h2>
-          <div className="resume-tiles">
-            {/* Example vertical tiles */}
-            <div className="resume-tile">
-              <h3>Software Engineer</h3>
-              <p>Company A, 2022-Present</p>
-              <ul>
-                <li>Worked on cool stuff</li>
-              </ul>
+          <div className="resume-scroll-container" ref={resumeContainerRef} style={{ transform: `translateX(-${resumeScrollX}px)` }}>
+            <div className="resume-horizontal">
+              {experiences.map((exp, idx) => (
+                <div className="resume-tile" key={idx}>
+                  <h3>{exp.title}</h3>
+                  <p>{exp.company}, {exp.time}</p>
+                  <ul>{exp.bullets.map((b, i) => <li key={i}>{b}</li>)}</ul>
+                </div>
+              ))}
             </div>
-            <div className="resume-tile">
-              <h3>Frontend Developer</h3>
-              <p>Company B, 2020-2022</p>
-              <ul>
-                <li>Built awesome UIs</li>
-              </ul>
-            </div>
-            {/* Add more tiles as needed */}
+          </div>
+          <div className="awards-container">
+            <h3>Awards</h3>
+            <ul>
+              <li>Award 1: Description</li>
+              <li>Award 2: Description</li>
+              {/* Add more awards as needed */}
+            </ul>
           </div>
         </div>
       </div>
 
-      {/* Top Layer - Static UI */}
       <div className="top-layer">
-        {/* Left side name */}
+        <a href="#resume" onClick={() => window.open('/path/to/resume.pdf', '_blank', 'noopener,noreferrer')} className="navbar-button" style={{ position: 'absolute', top: '2rem', left: '3rem', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.5rem 1rem', borderRadius: '25px', transition: 'all 0.3s ease', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>Resume</a>
         <div className="name-section">
           <h1>Emily Xu</h1>
         </div>
-
-        {/* Top navigation */}
         <nav className="navbar">
-
-          <a
-            href="#about"
-            onClick={e => { e.preventDefault(); setActivePage('about'); }}
-            className={activePage === 'about' ? 'active' : ''}
-          >About</a>
-          <a
-            href="#projects"
-            onClick={e => { e.preventDefault(); setActivePage('projects'); }}
-            className={activePage === 'projects' ? 'active' : ''}
-          >Projects</a>
-          <a
-            href="#resume"
-            onClick={e => { e.preventDefault(); setActivePage('resume'); }}
-            className={activePage === 'resume' ? 'active' : ''}
-          >Resume</a>
-
+          <a href="#about" onClick={e => { e.preventDefault(); setActivePage('about'); }} className={activePage === 'about' ? 'active' : ''}>About</a>
+          <a href="#projects" onClick={e => { e.preventDefault(); setActivePage('projects'); }} className={activePage === 'projects' ? 'active' : ''}>Projects</a>
+          <a href="#resume" onClick={e => { e.preventDefault(); setActivePage('resume'); }} className={activePage === 'resume' ? 'active' : ''}>Experience</a>
         </nav>
       </div>
 
-      {/* Scroll indicator (only show on projects page) */}
       {activePage === 'projects' && (
         <div className="scroll-indicator">
-          <div className="scroll-text">
-            <span>Scroll to explore</span>
-          </div>
-          <div className="progress-bar">
-            <div
-              className="progress-fill"
-              style={{
-                width: `${progressPercentage}%`
-              }}
-            />
-          </div>
+          <div className="scroll-text"><span>Scroll to explore</span></div>
+          <div className="progress-bar"><div className="progress-fill" style={{ width: `${progressPercentage}%` }} /></div>
+        </div>
+      )}
+      {activePage === 'resume' && (
+        <div className="scroll-indicator">
+          <div className="scroll-text"><span>Scroll to explore</span></div>
+          <div className="progress-bar"><div className="progress-fill" style={{ width: `${resumeProgress}%` }} /></div>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
