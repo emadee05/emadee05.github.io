@@ -158,7 +158,9 @@ function App() {
 
       <div className={`middle-layer about-layer${activePage === 'about' ? ' visible' : ''}`}>
         <div className="about-content">
-          <img src="/src/assets/me_picture.jpg" alt="Emily Xu" className="about-photo" />
+          <div className="about-photo">
+            <img src="/assets/me_picture.jpg" alt="Emily Xu" />
+          </div>
           <div className="about-description">
             <h2>About Me</h2>
             <p>
