@@ -195,14 +195,17 @@ function App() {
       </div>
 
       <div className="top-layer">
-        <a href="#resume" onClick={() => window.open('/path/to/resume.pdf', '_blank', 'noopener,noreferrer')} className="navbar-button" style={{ position: 'absolute', top: '2rem', left: '3rem', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.5rem 1rem', borderRadius: '25px', transition: 'all 0.3s ease', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.2)', color: 'white' }}>Resume</a>
+        <div className="resume-button">
+        <a href="/Emily_Xu_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
+        </div>
+        
         <div className="name-section">
-          <h1>Emily Xu</h1>
+          <h1>Emily Poop</h1>
         </div>
         <nav className="navbar">
           <a href="#about" onClick={e => { e.preventDefault(); setActivePage('about'); }} className={activePage === 'about' ? 'active' : ''}>About</a>
           <a href="#projects" onClick={e => { e.preventDefault(); setActivePage('projects'); }} className={activePage === 'projects' ? 'active' : ''}>Projects</a>
-          <a href="#resume" onClick={e => { e.preventDefault(); setActivePage('resume'); }} className={activePage === 'resume' ? 'active' : ''}>Experience</a>
+          <a href="#experience" onClick={e => { e.preventDefault(); setActivePage('resume'); }} className={activePage === 'resume' ? 'active' : ''}>Experience</a>
         </nav>
       </div>
 
