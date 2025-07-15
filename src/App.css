@@ -294,7 +294,7 @@
 }
 
 .name-section h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Nunito', serif;
   font-size: 4rem;
   font-weight: 700;
   color: white;
@@ -473,7 +473,7 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
   height: 400px; /* Increased height */
-  margin-top: 150px; /* Added top margin to center the boxes */
+  margin-top: 80px; /* Added top margin to center the boxes */
 }
 
 .resume-scroll-container::-webkit-scrollbar {
@@ -579,7 +579,32 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   color: #e2e8f0;
   max-width: 80%;
-  margin-left: auto;
+  margin-left: 200px;
   margin-right: auto;
   padding-left: 50px; /* Move text slightly to the right */
+}
+
+.about-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.about-link-button {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.about-link-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }

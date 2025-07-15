@@ -114,10 +114,11 @@ function App() {
   const resumeProgress = resumeMaxScroll > 0 ? (resumeScrollX / resumeMaxScroll) * 100 : 0;
 
   const experiences = [
-    { title: 'Software Engineer', company: 'Company A', time: '2022–Present', bullets: ['Worked on cool stuff'] },
-    { title: 'Frontend Developer', company: 'Company B', time: '2020–2022', bullets: ['Built awesome UIs'] },
-    { title: 'Research Assistant', company: 'Caltech', time: 'Summer 2024', bullets: ['Explored autonomous driving'] },
-    { title: 'Course Assistant', company: 'CS 156a', time: '2024–2025', bullets: ['Held machine learning office hours'] }
+    { title: 'Software Engineer/Machine Learning Intern', company: 'hireEZ', time: '2025–Present', bullets: ['ML for job matching'] },
+    { title: 'Undergraduate Researcher', company: 'Autonomous Robotics and Control Lab', time: '2025–Present', bullets: ['ML for the Indy Autonomous Challenge'] },
+    { title: 'Undergraduate Researcher', company: 'Golwala Group', time: '2023-2024', bullets: ['Circuits for dark matter detection'] },
+    { title: 'Canadian Team Captain', company: 'International Young Physicists Tournament', time: '2022', bullets: ['Thesis-defense style research competition'] },
+
   ];
 
   return (
@@ -164,8 +165,19 @@ function App() {
           <div className="about-description">
             <h2>About Me</h2>
             <p>
-              Hi! I'm Emily Xu, a passionate full-stack developer with a love for building beautiful, functional web experiences. I enjoy working with modern technologies and bringing creative ideas to life.
+              Hi! I'm Emily Xu, a rising junior at Caltech studying Electrical Engineering with a focus in Intelligent Systems. I'm interested in engineering, robotics, and AI.
             </p>
+            <div className="about-buttons">
+              <a href="https://github.com/emadee05" target="_blank" rel="noopener noreferrer" className="about-link-button">
+                GitHub
+              </a>
+              <a href="mailto:exu@caltech.edu" className="about-link-button">
+                Email
+              </a>
+              <a href="https://linkedin.com/in/emilyyhxu" target="_blank" rel="noopener noreferrer" className="about-link-button">
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -186,9 +198,9 @@ function App() {
           <div className="awards-container">
             <h3>Awards</h3>
             <ul>
-              <li>Award 1: Description</li>
-              <li>Award 2: Description</li>
-              {/* Add more awards as needed */}
+              <li>NASA Big Idea Challenge Finalist 2024</li>
+              <li>International Young Physicists' Tournament Bronze 2022</li>
+              <li>Carnegie Mellon Womens Mathematics Competition 2022</li>
             </ul>
           </div>
         </div>
@@ -196,11 +208,11 @@ function App() {
 
       <div className="top-layer">
         <div className="resume-button">
-        <a href="/Emily_Xu_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
+        <a href="/Emily_Xu_2025_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_2025_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
         </div>
         
         <div className="name-section">
-          <h1>Emily Poop</h1>
+          <h1>Emily Xu</h1>
         </div>
         <nav className="navbar">
           <a href="#about" onClick={e => { e.preventDefault(); setActivePage('about'); }} className={activePage === 'about' ? 'active' : ''}>About</a>
