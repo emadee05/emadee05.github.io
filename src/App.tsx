@@ -21,32 +21,26 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates",
-    image: "https://via.placeholder.com/400x300/f093fb/ffffff?text=Task+Manager",
-    technologies: ["React", "Firebase", "TypeScript", "Material-UI"]
+    title: "Infinite Vertical Platformer Video Game",
+    description: "A doodle-jump inspired infinite vertical platformer game with custom physics enginebuilt from scratch in C. The player can jump to avoid obstacles and collect power-ups. The game is built using the POSIX API and the SDL2 library.",
+    image: "/assets/beaver.jpg",
+    technologies: ["C", "POSIX API", "SDL", "Physics Engine"],
+    url: "https://emadee05.github.io/beaver-jump/"
   },
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "A beautiful weather dashboard with location-based forecasts",
-    image: "https://via.placeholder.com/400x300/4facfe/ffffff?text=Weather+App",
-    technologies: ["React", "OpenWeather API", "CSS3", "Chart.js"]
+    title: "LLM Stock Market Analysis Tool",
+    description: "Full-stack stock market analysis web app with Flask and PostgreSQL. Enables real-time data visualization via Plotly based on user-input tickers and date ranges.",
+    image: "https://via.placeholder.com/400x300/43e97b/ffffff?text=Analytics",
+    technologies: ["Python", "BeautifulSoup", "Docker", "PostgreSQL", "Flask", "Plotly"]
   },
   {
     id: 4,
-    title: "Social Media Analytics",
-    description: "Analytics dashboard for social media performance tracking",
-    image: "https://via.placeholder.com/400x300/43e97b/ffffff?text=Analytics",
-    technologies: ["React", "D3.js", "Express", "PostgreSQL"]
+    title: "ABEL Implementation of CPU",
+    description: "An 8-bit Harvard architecture CPU implemented in ABEL, a hardware description language. Designed a 16-bit instruction register with decoding logic and state machien for multi-cycle instructions.",
+    image: "https://via.placeholder.com/400x300/4facfe/ffffff?text=Weather+App",
+    technologies: ["ABEL"]
   },
-  {
-    id: 5,
-    title: "Portfolio Website",
-    description: "A responsive portfolio website with modern design",
-    image: "https://via.placeholder.com/400x300/38bdf8/ffffff?text=Portfolio",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"]
-  }
 ];
 
 function App() {
@@ -208,7 +202,7 @@ function App() {
 
       <div className="top-layer">
         <div className="resume-button">
-        <a href="/Emily_Xu_2025_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_2025_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
+        <a href="/Emily_Xu_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
         </div>
         
         <div className="name-section">
