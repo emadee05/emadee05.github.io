@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
-
 interface Project {
   id: number;
   title: string;
@@ -202,7 +201,7 @@ function App() {
 
       <div className="top-layer">
         <div className="resume-button">
-        <a href="/Emily_Xu_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
+        <a href="/Emily_Xu_2025_Resume.pdf" onClick={e => { e.preventDefault(); window.open('/Emily_Xu_2025_Resume.pdf', '_blank', 'noopener,noreferrer'); }} className="navbar-button">Resume</a>
         </div>
         
         <div className="name-section">
