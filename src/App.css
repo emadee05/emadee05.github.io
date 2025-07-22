@@ -48,7 +48,7 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .middle-layer.visible {
@@ -58,6 +58,8 @@
 
 .projects-layer {
   z-index: 2;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .about-layer {
@@ -132,7 +134,9 @@
 .projects-container {
   display: flex;
   gap: 2rem;
-  padding: 2rem;
+  padding: 0;
+  padding-right: 2rem;
+  padding-left: 200px;
   height: 100%;
   align-items: center;
   will-change: transform;

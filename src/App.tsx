@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: 2,
     title: "Infinite Vertical Platformer Video Game",
     description: "A doodle-jump inspired infinite vertical platformer game with custom physics enginebuilt from scratch in C. The player can jump to avoid obstacles and collect power-ups. The game is built using the POSIX API and the SDL2 library.",
-    image: "/assets/beaver.jpg",
+    image: "/assets/beaver_jump.jpg",
     technologies: ["C", "POSIX API", "SDL", "Physics Engine"],
     url: "https://emadee05.github.io/beaver-jump/"
   },
@@ -124,7 +124,7 @@ function App() {
         <div 
           ref={projectsContainerRef}
           className="projects-container"
-          style={{ transform: `translateX(-${scrollX}px)`, paddingLeft: '1200px' }}
+          style={{ transform: `translateX(-${scrollX}px)` }}
         >
           {projects.map((project) => (
             <div 
