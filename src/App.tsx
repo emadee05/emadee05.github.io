@@ -48,7 +48,7 @@ function App() {
   const [scrollX, setScrollX] = useState(0);
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const [maxScroll, setMaxScroll] = useState(0);
-  const [activePage, setActivePage] = useState<'projects' | 'about' | 'resume'>('projects');
+  const [activePage, setActivePage] = useState<'projects' | 'about' | 'resume'>('about');
 
   const resumeContainerRef = useRef<HTMLDivElement>(null);
   const [resumeScrollX, setResumeScrollX] = useState(0);
