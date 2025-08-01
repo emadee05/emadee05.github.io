@@ -30,15 +30,17 @@ const projects: Project[] = [
     id: 3,
     title: "LLM Stock Market Analysis Tool",
     description: "Full-stack stock market analysis web app with Flask and PostgreSQL. Enables real-time data visualization via Plotly based on user-input tickers and date ranges.",
-    image: "https://via.placeholder.com/400x300/43e97b/ffffff?text=Analytics",
-    technologies: ["Python", "BeautifulSoup", "Docker", "PostgreSQL", "Flask", "Plotly"]
+    image: "/assets/tracker.png",
+    technologies: ["Python", "BeautifulSoup", "Docker", "PostgreSQL", "Flask", "Plotly"],
+    url: "https://github.com/emadee05/tracker/"
   },
   {
     id: 4,
     title: "ABEL Implementation of CPU",
     description: "An 8-bit Harvard architecture CPU implemented in ABEL, a hardware description language. Designed a 16-bit instruction register with decoding logic and state machien for multi-cycle instructions.",
-    image: "https://via.placeholder.com/400x300/4facfe/ffffff?text=Weather+App",
-    technologies: ["ABEL"]
+    image: "/assets/ee10a_block.png",
+    technologies: ["ABEL"],
+    url: "https://drive.google.com/drive/u/0/folders/1IW7x9k5_Rk9Q2UsXXnLtLVG3HTW88-KF"
   },
 ];
 
@@ -158,7 +160,7 @@ function App() {
           <div className="about-description">
             <h2>About Me</h2>
             <p>
-              Hi! I'm Emily Xu, a rising junior at Caltech studying Electrical Engineering with a focus in Intelligent Systems. I'm interested in engineering, robotics, and AI.
+              Hi! I'm Emily Xu, a rising junior at Caltech studying Electrical Engineering with a focus in Intelligent Systems. I have experience in physics, robotics, and machine learning. I'm interested in software engineering, machine learning, quantitative trading, and robotics.
             </p>
             <div className="about-buttons">
               <a href="https://github.com/emadee05" target="_blank" rel="noopener noreferrer" className="about-link-button">
